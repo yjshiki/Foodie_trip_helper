@@ -1,0 +1,9 @@
+-- Trusted Reviews: 
+-- Input the name of a restaurant 
+-- Print reviews from all trusted users for this restaurant. A ``trusted user’’ is defined as a user: 
+-- Has yelping_since before 2017 
+-- Has never reviewed a restaurant more than 3 times within 1 year. 
+-- The number of reviews he has given to any restaurant does not exceed 20% of the total number of reviews given by him 
+-- Has made more than 6 useful reviews
+-- Numbers may be changed according to the data
+-- Schema: (user_name, review)
