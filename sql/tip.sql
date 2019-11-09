@@ -1,8 +1,6 @@
 -- Input a name of a restaurant, select start_date and end_date in a drop-down and input a keyword
--- Print all tips (short reviews) containing the user-inputted keyword between 
--- chosen dates for top 5 open restaurants that have all the categories of the 
--- user-inputted restaurant, from all users giving stars to this restaurant 
--- higher than his average_stars. The result should exclude the restaurant that was input. 
+-- Print all tips (short reviews) for top 5 open restaurants that have all the categories of the 
+-- user-inputted restaurant. The result should exclude the restaurant that was input. 
 -- Order first by highest “stars”, then highest “review_count” of restaurants, 
 -- the date of the tip descendingly, and then the user_name. 
 -- Schema: (business_id, business_name, user_id, user_name, tip, date, stars, review_count)
@@ -42,13 +40,14 @@ with Businesses as (
 		))
 	-- ) and a.name != "${inputName}"
 	) and a.name != "Dental by Design"
+	and a.is_open = 1
 	order by stars desc, review_count desc, business_name
 	limit 5
 )
 select distinct 
-	a.business_id as business_id, 
+	-- a.business_id as business_id, 
 	a.name as business_name, 
-	b.user_id as user_id, 
+	-- b.user_id as user_id, 
 	b.user_name as user_name, 
 	b.tip as tip, 
 	a.stars as stars, 
