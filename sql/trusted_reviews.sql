@@ -17,6 +17,12 @@ from yelp_user a
 join yelp_review2 b
 on a.user_id = b.user_id
 where 
+	b.business_id = (
+		select business_id 
+		from yelp_business 
+		-- where a.name = "${inputName}"
+		where a.name = "Dental by Design"
+	)
 	a.yelp_since <= 2017 
 	and 
 	0.2 * a.review_count >= all(
