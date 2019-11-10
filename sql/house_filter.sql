@@ -1,0 +1,10 @@
+-- select a business category
+-- print the number of houses 
+-- having more than 10 reviews
+-- in each neighborhood
+-- that have at least 5 business
+-- of the selected category nearby
+-- ``nearby'' here means
+-- having the same zip code 
+-- Sort by num_business, and then housename
+-- schema: (house_id, house_name, num_business)

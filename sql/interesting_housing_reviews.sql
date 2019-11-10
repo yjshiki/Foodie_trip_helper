@@ -1,5 +1,5 @@
 -- select a neighborhood_cleansed 
--- print the 10 top users that have reviewed housings 
+-- print the top 10 users that have reviewed housings 
 -- in this neighborhood after 2014-01-01
 -- sort by the number of neighborhoods the user 
 -- has reviewed, and then the number of reviews
