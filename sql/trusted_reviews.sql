@@ -1,10 +1,10 @@
 -- Trusted Reviews: 
--- Input the name of a restaurant 
--- Print top 10 reviews from all trusted users for this restaurant. 
+-- Input the name of a business 
+-- Print top 10 reviews from all trusted users for this business. 
 -- A ``trusted user'' is defined as a user: 
 -- Has yelping_since before 2017 
--- Has never reviewed a restaurant more than 3 times within one year. 
--- The number of reviews he has given to any restaurant 
+-- Has never reviewed a business more than 2 times within one year. 
+-- The number of reviews he has given to any business 
 -- does not exceed 20% of the total number of reviews given by him. 
 -- Has made more than 2 useful reviews
 -- (Numbers may be changed according to the data)
@@ -25,7 +25,8 @@ join (
 ) b 
 on a.user_id = b.user_id
 where 
-	a.yelping_since <= 2017 
+	b.buiness_name = "Dental by Design"
+	and a.yelping_since <= 2017 
 	and 0.2 * a.review_count >= all(
 		select review_count_business
 		from (
@@ -43,7 +44,7 @@ where
 		where x.user_id = a.user_id
 		and x.useful = 1
 	) >= 2
-	and 3 >= all(
+	and 2 >= all(
 		select review_count_business 
 		from (
 			select 
