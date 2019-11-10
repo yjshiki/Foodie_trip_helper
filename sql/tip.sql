@@ -1,5 +1,5 @@
--- Input a name of a restaurant, select start_date and end_date in a drop-down and input a keyword
--- Print all tips (short reviews) for top 5 open restaurants that have all the categories of the 
+-- Input a name of a restaurant 
+-- Print all tips (short reviews) for top 3 open restaurants that have all the categories of the 
 -- user-inputted restaurant. The result should exclude the restaurant that was input. 
 -- Order first by highest “stars”, then highest “review_count” of restaurants, 
 -- the date of the tip descendingly, and then the user_name. 
@@ -42,7 +42,7 @@ with Businesses as (
 	) and a.name != "Dental by Design"
 	and a.is_open = 1
 	order by stars desc, review_count desc, business_name
-	limit 5
+	limit 3
 )
 select distinct 
 	-- a.business_id as business_id, 
@@ -63,5 +63,6 @@ join (
 	on t.user_id = x.user_id
 ) b
 on a.business_id = b.business_id
-order by stars desc, review_count desc, date desc, user_name;
+order by 
+stars desc, review_count desc, date desc, user_name;
 

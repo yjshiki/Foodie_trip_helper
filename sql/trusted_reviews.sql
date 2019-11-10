@@ -1,6 +1,7 @@
 -- Trusted Reviews: 
 -- Input the name of a restaurant 
--- Print top 10 reviews from all trusted users for this restaurant. A ``trusted user’’ is defined as a user: 
+-- Print top 10 reviews from all trusted users for this restaurant. 
+-- A ``trusted user’’ is defined as a user: 
 -- Has yelping_since before 2017 
 -- Has never reviewed a restaurant more than 3 times within one year. 
 -- The number of reviews he has given to any restaurant 
@@ -17,13 +18,14 @@ from yelp_user a
 join yelp_review2 b
 on a.user_id = b.user_id
 where 
+	-- this is easy to optimize using join
 	b.business_id = (
 		select business_id 
 		from yelp_business 
 		-- where a.name = "${inputName}"
-		where a.name = "Dental by Design"
+		where name = "Dental by Design"
 	)
-	a.yelp_since <= 2017 
+	a.yelping_since <= 2017 
 	and 
 	0.2 * a.review_count >= all(
 		select review_count_business
