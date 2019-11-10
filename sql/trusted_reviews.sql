@@ -26,6 +26,7 @@ join (
 on a.user_id = b.user_id
 where 
 	b.buiness_name = "Dental by Design"
+	-- where a.name = "${inputName}"
 	and a.yelping_since <= 2017 
 	and 0.2 * a.review_count >= all(
 		select review_count_business
