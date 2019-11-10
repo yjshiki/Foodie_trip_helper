@@ -1,7 +1,8 @@
 -- select a neighborhood_cleansed 
--- print the 10 top user that have reviewed housings 
+-- print the 10 top users that have reviewed housings 
 -- in this neighborhood after 2014-01-01
 -- sort by the number of neighborhoods the user 
 -- has reviewed, and then the number of reviews
--- for the inputted neighborhood
+-- for housings in the inputted neighborhood, 
+-- and then the user_name
 -- schema: (user_id, user_name, num_neighborhoods, num_reviews)

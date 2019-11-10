@@ -1,10 +1,10 @@
--- Trusted Reviews: 
 -- Input the name of a business 
 -- Print top 10 reviews from all trusted users for this business. 
 -- A ``trusted user'' is defined as a user: 
 -- Has yelping_since before 2017 
 -- Has never reviewed a business more than 2 times within one year. 
--- The number of reviews he has given to any business 
+-- The number of reviews he has given to 
+-- any business not opening on Saturday
 -- does not exceed 20% of the total number of reviews given by him. 
 -- Has made more than 2 useful reviews
 -- (Numbers may be changed according to the data)
@@ -34,7 +34,10 @@ where
 				x.business_id as business_id, 
 				count(x.review_id) as review_count_business
 			from yelp_review2 x
-			where x.user_id = a.user_id
+			join yelp_business_hours y
+			on x.business_id = y.business_id
+			where x.user_id = a.user_id 
+			and y.saturday = "None"
 			group by business_id
 		)
 	)
