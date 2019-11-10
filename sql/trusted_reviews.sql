@@ -25,6 +25,7 @@ where
 		-- where a.name = "${inputName}"
 		where name = "Dental by Design"
 	)
+	and
 	a.yelping_since <= 2017 
 	and 
 	0.2 * a.review_count >= all(
