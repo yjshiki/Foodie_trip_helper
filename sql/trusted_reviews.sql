@@ -6,8 +6,8 @@
 -- Has never reviewed a restaurant more than 3 times within one year. 
 -- The number of reviews he has given to any restaurant 
 -- does not exceed 20% of the total number of reviews given by him. 
--- Has made more than 4 useful reviews
--- Numbers may be changed according to the data
+-- Has made more than 2 useful reviews
+-- (Numbers may be changed according to the data)
 -- Schema: (user_name, review)
 -- ==> yelp_review2.csv <==
 -- "review_id","user_id","business_id","stars","date","text","useful","funny","cool"
@@ -15,19 +15,18 @@ select
 	a.user_name as user_name, 
 	b.text as review
 from yelp_user a
-join yelp_review2 b
+join (
+	select 
+		b.user_id as user_id, 
+		c.business_id as business_id
+	from yelp_review2 b
+	join yelp_business c 
+	on b.business_id = c.business_id
+) b 
 on a.user_id = b.user_id
 where 
-	-- this is easy to optimize using join
-	b.business_id = (
-		select business_id 
-		from yelp_business 
-		-- where a.name = "${inputName}"
-		where name = "Dental by Design"
-	)
 	a.yelping_since <= 2017 
-	and 
-	0.2 * a.review_count >= all(
+	and 0.2 * a.review_count >= all(
 		select review_count_business
 		from (
 			select 
