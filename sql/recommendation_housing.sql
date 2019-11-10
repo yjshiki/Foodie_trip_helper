@@ -1,0 +1,9 @@
+-- input a business type
+-- print the top 10 houses 
+-- that have the most businesses
+-- of this the selected type
+-- nearby, with accomodates > 1
+-- ``nearby'' means the same zip code 
+-- sort first by stars, and then 
+-- the number of reviewers, and then 
+-- review_count

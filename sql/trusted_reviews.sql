@@ -1,7 +1,7 @@
 -- Trusted Reviews: 
 -- Input the name of a restaurant 
 -- Print top 10 reviews from all trusted users for this restaurant. 
--- A ``trusted user’’ is defined as a user: 
+-- A ``trusted user'' is defined as a user: 
 -- Has yelping_since before 2017 
 -- Has never reviewed a restaurant more than 3 times within one year. 
 -- The number of reviews he has given to any restaurant 

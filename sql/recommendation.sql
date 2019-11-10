@@ -1,0 +1,9 @@
+-- input the name of a house, and choose 
+-- a business type from the dropdown
+-- print top 20 businesses of the selected type and in the
+-- same neighborhood as the inputted house
+-- that has more than 5 tips 
+-- and 2 likes after 2017-01-01
+-- and has wifi
+-- sort by stars, and then review_count
+-- schema: (business_id, business_name, stars, review_count)
