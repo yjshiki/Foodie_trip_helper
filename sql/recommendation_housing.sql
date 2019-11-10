@@ -5,5 +5,5 @@
 -- nearby, with accomodates > 1
 -- ``nearby'' means the same zip code 
 -- sort first by stars, and then 
--- the number of reviewers, and then 
--- review_count
+-- the number of reviewers 
+-- schema: (business_id, businesses_name, stars, num_reviewers)

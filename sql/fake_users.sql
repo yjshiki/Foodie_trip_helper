@@ -1,0 +1,8 @@
+-- a user is said to be fake
+-- if he has reviewed a business 
+-- more than 1 times within one year
+-- and given 5 stars
+-- to a business
+-- , and some of his friends 
+-- also have done so 
+-- schema: (user_id, user_name)
