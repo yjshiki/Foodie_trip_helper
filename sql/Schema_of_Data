@@ -29,3 +29,10 @@ id,name,zipcode,host_id,host_is_superhost,host_response_time,host_response_rate,
 
 ==> reviews_cleaned.csv <==
 listing_id,id,date,reviewer_id,reviewer_name,comments
+
+==> ny_zipcode.csv <==
+zipcode,borough,neighborhood
+
+
+
+
