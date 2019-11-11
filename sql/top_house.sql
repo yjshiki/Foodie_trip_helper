@@ -31,31 +31,36 @@ with T as (
 		a.num_reviewers as num_reviewers, 
 		a.price as price
 	from G a
-	-- top 100 houses meeting requirements
-	-- in each room_type
-	inner join (
-		select b.listing_id 
-		from G b 
-		where 
-			b.room_type = room_type
-			-- b.room_type = "Shared room"
-			and 
-			b.num_reviewers >= (
-				select avg(num_reviewers)
-				from G 
-				where room_type = b.room_type
-				-- where room_type = "Shared room"
-			)
-			-- and b.price <= "${inputPrice}"
-			and b.price <= 800 
-		order by 
-			b.review_scores_rating desc, 
-			b.num_reviewers desc, 
-			b.price 
-		limit 100
-	) t 
-	on t.listing_id = a.listing_id
+	where 100 >= (
+		select count(*) 
+		-- houses meeting requirements
+		from (
+			select 
+				b.listing_id
+			from G b 
+			where 
+				b.num_reviewers >= (
+					select avg(num_reviewers)
+					from G 
+					where a.room_type = b.room_type
+					-- where room_type = "Shared room"
+				)
+				-- and b.price <= "${inputPrice}"
+				and b.price <= 800 
+			order by 
+				b.review_scores_rating desc, 
+				b.num_reviewers desc, 
+				b.price 
+		)
+	)
 )
+select 
+	a.room_type, 
+	a.listing_id
+from airbnb_listing a 
+inner join 
+
+
 select 
 	b.neighborhood as neighborhood, 
 	a.room_type as room_type, 
