@@ -23,34 +23,38 @@ with T as (
 		on a.id = b.listing_id
 		group by listing_id
 	)
-	-- select 
-	-- 	a.listing_id as listing_id, 
-	-- 	a.zipcode as zipcode, 
-	-- 	a.room_type as room_type
-	-- from G a
-	-- -- top 100 houses meeting requirements
-	-- -- in each room_type
-	-- where a.listing_id in (
 	select 
-		b.listing_id, 
-		b.room_type, 
-		b.zipcode 
-	from G b 
-	where 
-		-- b.room_type = a.room_type
-		b.room_type = "Shared room"
-		and 
-		b.num_reviewers >= (
-			select avg(num_reviewers)
-			from G 
-			where room_type = b.room_type
-			-- where room_type = "Shared room"
-		)
-		-- and b.price <= "${inputPrice}"
-		and b.price <= 800 
-	order by b.review_scores_rating desc, b.num_reviewers desc, b.price 
-	limit 100
-	-- )
+		a.listing_id as listing_id, 
+		a.zipcode as zipcode, 
+		a.room_type as room_type, 
+		a.review_scores_rating as review_scores_rating, 
+		a.num_reviewers as num_reviewers, 
+		a.price as price
+	from G a
+	-- top 100 houses meeting requirements
+	-- in each room_type
+	inner join (
+		select b.listing_id 
+		from G b 
+		where 
+			b.room_type = room_type
+			-- b.room_type = "Shared room"
+			and 
+			b.num_reviewers >= (
+				select avg(num_reviewers)
+				from G 
+				where room_type = b.room_type
+				-- where room_type = "Shared room"
+			)
+			-- and b.price <= "${inputPrice}"
+			and b.price <= 800 
+		order by 
+			b.review_scores_rating desc, 
+			b.num_reviewers desc, 
+			b.price 
+		limit 100
+	) t 
+	on t.listing_id = a.listing_id
 )
 select 
 	b.neighborhood as neighborhood, 
