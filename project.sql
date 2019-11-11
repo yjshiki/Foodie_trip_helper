@@ -249,10 +249,10 @@ CREATE TABLE reviews_cleaned(
 	id int(25), 
 	review_date VARCHAR(255), 
 	reviewer_id int(25), 
-	reviewer_name VARCHAR(255),
-	comments VARCHAR(255),
+	reviewer_name VARCHAR(255), 
+	comments VARCHAR(255), 
 	PRIMARY KEY(i),
-	FOREIGN KEY(id) REFERENCES airbnb_listing(id)
+	FOREIGN KEY(listing_id) REFERENCES airbnb_listing(id)
 );
 
 
