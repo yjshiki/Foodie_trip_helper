@@ -1,4 +1,4 @@
--- input a price
+-- input a price, and select a room_type from dropdown
 -- count the number of top 100 houses in each neighborhood 
 -- with the price lower than the inputted price in each room_type
 -- that have the number of reviewers 
@@ -13,9 +13,9 @@ with T as (
 		select 
 			a.id as listing_id, 
 			a.room_type as room_type, 
-			a.property_type as property_type, 
 			a.review_scores_rating as review_scores_rating, 
 			a.zipcode as zipcode, 
+			-- a.accommodates as accommodates, 
 			a.price as price, 
 			count(b.reviewer_id) as num_reviewers
 		from airbnb_listing a 
@@ -34,6 +34,7 @@ with T as (
 	select 
 		b.listing_id, 
 		b.room_type, 
+		-- b.accommodates, 
 		b.zipcode 
 	from G b 
 	where 
@@ -47,7 +48,7 @@ with T as (
 			-- where room_type = "Shared room"
 		)
 		-- and b.price <= "${inputPrice}"
-		and b.price <= 800 
+		and b.price <= 1000 
 	order by b.review_scores_rating desc, b.num_reviewers desc, b.price 
 	limit 100
 	-- )
@@ -55,9 +56,10 @@ with T as (
 select 
 	b.neighborhood as neighborhood, 
 	a.room_type as room_type, 
+	-- a.accommodates as accommodates, 
 	count(a.listing_id) as num_houses 
 from T a 
 join ny_zipcode b 
 on a.zipcode = b.zipcode 
-group by neighborhood, room_type 
+group by neighborhood, room_type
 
