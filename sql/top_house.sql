@@ -29,7 +29,7 @@ with T as (
 	-- top 100 houses meeting requirements
 	-- in each room_type
 	where a.house_id in (
-		select *
+		select b.house_id
 		from G b 
 		where 
 			b.room_type = a.room_type
@@ -51,5 +51,6 @@ select
 	count(a.house_id) as num_houses 
 from T a 
 join ny_zipcode b 
+on a.zipcode = b.zipcode 
 group by neighborhood, room_type
 
