@@ -29,7 +29,7 @@ where
 	-- where a.name = "${inputName}"
 	and a.yelping_since <= 2017 
 	and 0.2 * a.review_count >= all(
-		select review_count_business
+		select t.review_count_business
 		from (
 			select 
 				x.business_id as business_id, 
@@ -40,7 +40,7 @@ where
 			where x.user_id = a.user_id 
 			and y.saturday = "None"
 			group by business_id
-		)
+		) t
 	)
 	and (
 		select count(*)
@@ -49,7 +49,7 @@ where
 		and x.useful = 1
 	) >= 2
 	and 2 >= all(
-		select review_count_business 
+		select t.review_count_business 
 		from (
 			select 
 				x.business_id as business_id, 
@@ -58,7 +58,7 @@ where
 			from yelp_review2 x
 			where x.user_id = a.user_id
 			group by business_id, year
-		)
+		) t 
 	)
 order by length(review) desc, user_name
 limit 10;

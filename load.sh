@@ -1,7 +1,7 @@
 LOAD DATA LOCAL INFILE 'dataset/ny_zipcode.csv' INTO TABLE ny_zipcode FIELDS TERMINATED BY ',' ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE 'airbnb_listing.csv' INTO TABLE airbnb_listing FIELDS TERMINATED BY ',' ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE 'dataset/reviews_cleaned.csv' INTO TABLE reviews_cleaned FIELDS TERMINATED BY '\t' ENCLOSED BY '"';
-LOAD DATA LOCAL INFILE 'dataset/yelp_business.csv' INTO TABLE yelp_business FIELDS TERMINATED BY ',' ENCLOSED BY '"';
+LOAD DATA LOCAL INFILE 'final_project/dataset/yelp_business.csv' INTO TABLE yelp_business FIELDS TERMINATED BY ',' ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE 'dataset/yelp_business_attributes.csv' INTO TABLE yelp_business_attributes FIELDS TERMINATED BY ',' ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE 'dataset/yelp_business_hours.csv' INTO TABLE yelp_business_hours FIELDS TERMINATED BY ',' ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE 'dataset/yelp_categories.csv' INTO TABLE yelp_categories FIELDS TERMINATED BY ',' ENCLOSED BY '"';

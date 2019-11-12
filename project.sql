@@ -23,8 +23,8 @@ CREATE TABLE yelp_business(
 	review_count int(10),
 	is_open int(10),
 	categories VARCHAR(255), 
-	PRIMARY KEY(business_id),
-	FOREIGN KEY(postal_code) REFERENCES ny_zipcode(zipcode)
+	PRIMARY KEY(business_id)
+	-- FOREIGN KEY(postal_code) REFERENCES ny_zipcode(zipcode)
 );
 
 
