@@ -17,11 +17,12 @@ CREATE TABLE yelp_business(
 	city VARCHAR(255),
 	state VARCHAR(255),
 	postal_code VARCHAR(255),
-	latitude decimal(10.8),
-	longitude decimal(10.8),
+	latitude decimal(30.4),
+	longitude decimal(30.4),
 	stars decimal(10.3),
 	review_count int(10),
 	is_open int(10),
+	categories VARCHAR(255), 
 	PRIMARY KEY(business_id),
 	FOREIGN KEY(postal_code) REFERENCES ny_zipcode(zipcode)
 );

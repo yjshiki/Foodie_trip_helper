@@ -1,6 +1,6 @@
 -- input a price, and select a room_type from dropdown
 -- count the number of top 100 houses in each neighborhood 
--- with the price lower than the inputted price in each room_type
+-- with the price lower than the inputted price in this room_type
 -- that have the number of reviewers 
 -- higher than the average number of 
 -- reviewers for rooms in this room_type

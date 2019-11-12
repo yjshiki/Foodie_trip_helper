@@ -1,9 +1,9 @@
--- input a business type
--- print the top 10 houses 
+-- select a business type from dropdown
+-- print the top 50 houses 
 -- that have the most businesses
 -- of this the selected type
--- nearby, with accomodates > 1
+-- nearby. 
 -- ``nearby'' means the same zip code 
--- sort first by stars, and then 
--- the number of reviewers 
+-- sort first by the number of businesses in this type, 
+-- by stars, and then the number of reviewers 
 -- schema: (business_id, businesses_name, stars, num_reviewers)
