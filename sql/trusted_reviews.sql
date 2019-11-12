@@ -1,6 +1,6 @@
 -- Input the name of a business 
 -- Print top 10 reviews from all trusted users for this business. 
--- A ``trusted user'' is defined as a user: 
+-- A ``trusted user'' is defined as a user meeting one of the following: 
 -- Has yelping_since before 2017 
 -- Has never reviewed a business more than 2 times within one year. 
 -- The number of reviews he has given to 

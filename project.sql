@@ -190,7 +190,7 @@ CREATE TABLE yelp_tip(
 	likes int(10),
 	business_id VARCHAR(255),
 	user_id VARCHAR(255),
-	PRIMARY KEY(business_id,user_id),
+	PRIMARY KEY(business_id,user_id,date),
 	FOREIGN KEY (business_id) REFERENCES yelp_business(business_id),
 	FOREIGN KEY (user_id) REFERENCES yelp_user(user_id)
 );
