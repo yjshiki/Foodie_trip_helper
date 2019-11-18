@@ -1,3 +1,4 @@
+-- yelp_tip dataset is not loaded. tip.sql is running for a very long time, so we have a large space of optimization for it
 -- Input a name of a restaurant 
 -- Print all tips (short reviews) for top 3 open restaurants that have all the categories of the 
 -- user-inputted restaurant. The result should exclude the restaurant that was input. 
