@@ -31,10 +31,10 @@ CREATE TABLE yelp_business(
 --==> yelp_categories.csv <==
 --id,category
 CREATE TABLE yelp_categories(
-	id VARCHAR(255),
+	business_id VARCHAR(255),
 	category VARCHAR(255),
-	PRIMARY KEY(id),
-	FOREIGN KEY (id) REFERENCES yelp_business(business_id)
+	PRIMARY KEY(business_id),
+	FOREIGN KEY (business_id) REFERENCES yelp_business(business_id)
 );
 
 --==> yelp_business_attributes.csv <==
@@ -255,5 +255,3 @@ CREATE TABLE reviews_cleaned(
 	PRIMARY KEY(i),
 	FOREIGN KEY(listing_id) REFERENCES airbnb_listing(id)
 );
-
-
