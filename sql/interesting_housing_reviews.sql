@@ -6,18 +6,6 @@
 -- for houses in the inputted neighborhood, 
 -- and then the reviewer_name
 -- schema: (reviewer_id, reviewer_name, num_neighborhoods, num_reviews, latest_comment, latest_date)
-with G as (
-	select 
-		a.reviewer_id as reviewer_id, 
-		a.reviewer_name as reviewer_name, 
-		a.id as review_id, 
-		c.neighborhood as neighborhood
-	from reviews_cleaned a 
-	join airbnb_listing b 
-	on b.id = a.listing_id 
-	join ny_zipcode c 
-	on c.zipcode = b.zipcode 
-)
 select 
 	a.reviewer_id as reviewer_id, 
 	a.reviewer_name as reviewer_name, 
@@ -33,18 +21,41 @@ from (
 		y.num_reviews
 	from (
 		select 
-			reviewer_id as reviewer_id, 
-			reviewer_name as reviewer_name, 
-			count(distinct neighborhood) as num_neighborhoods 
-		from G
+			t.reviewer_id as reviewer_id, 
+			t.reviewer_name as reviewer_name, 
+			count(distinct t.neighborhood) as num_neighborhoods 
+		-- G 
+		from (
+			select 
+				a.reviewer_id as reviewer_id, 
+				a.reviewer_name as reviewer_name, 
+				a.id as review_id, 
+				c.neighborhood as neighborhood
+			from reviews_cleaned a 
+			join airbnb_listing b 
+			on b.id = a.listing_id 
+			join ny_zipcode c 
+			on c.zipcode = b.zipcode 
+		) t 
 		group by reviewer_id
 	) x
 	join (
 		select 
 			reviewer_id, 
 			count(distinct review_id) as num_reviews
-		from G 
-		where neighborhood = "Southern Brooklyn"
+		from (
+			select 
+				a.reviewer_id as reviewer_id, 
+				a.reviewer_name as reviewer_name, 
+				a.id as review_id, 
+				c.neighborhood as neighborhood
+			from reviews_cleaned a 
+			join airbnb_listing b 
+			on b.id = a.listing_id 
+			join ny_zipcode c 
+			on c.zipcode = b.zipcode 
+		) t 
+		where t.neighborhood = "Southern Brooklyn"
 		group by reviewer_id
 	) y
 	on x.reviewer_id = y.reviewer_id
