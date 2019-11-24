@@ -33,7 +33,7 @@ CREATE TABLE yelp_business(
 CREATE TABLE yelp_categories(
 	business_id VARCHAR(255),
 	category VARCHAR(255),
-	PRIMARY KEY(business_id),
+	PRIMARY KEY(business_id, category),
 	FOREIGN KEY (business_id) REFERENCES yelp_business(business_id)
 );
 
