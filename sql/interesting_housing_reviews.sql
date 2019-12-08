@@ -5,7 +5,9 @@
 -- has reviewed, and then the number of reviews
 -- for houses in the inputted neighborhood, 
 -- and then the reviewer_name
--- schema: (reviewer_id, reviewer_name, num_neighborhoods, num_reviews, latest_comment, latest_date)
+-- schema: (reviewer_id, reviewer_name, num_neighborhoods, num_reviews, latest_comment, latest_date) 
+create index reviews 
+on reviews_cleaned(reviewer_name, review_date);
 select 
 	a.reviewer_id as reviewer_id, 
 	a.reviewer_name as reviewer_name, 
@@ -60,7 +62,7 @@ from (
 	) y
 	on x.reviewer_id = y.reviewer_id
 	order by num_neighborhoods desc, num_reviews desc, reviewer_name
-	limit 100
+	limit 10
 ) a
 join reviews_cleaned z 
 on z.reviewer_id = a.reviewer_id 
@@ -69,3 +71,4 @@ where z.review_date = (
 	from reviews_cleaned 
 	where reviewer_id = a.reviewer_id
 )
+
