@@ -6,8 +6,11 @@
 -- for houses in the inputted neighborhood, 
 -- and then the reviewer_name
 -- schema: (reviewer_id, reviewer_name, num_neighborhoods, num_reviews, latest_comment, latest_date) 
-create index reviews 
-on reviews_cleaned(reviewer_name, review_date);
+-- before: 21.75 sec, after: 18.33 sec
+create index reviews
+on reviews_cleaned(reviewer_id, reviewer_name, review_date, comments);
+create index airbnb 
+on airbnb_listing(id, zipcode);
 select 
 	a.reviewer_id as reviewer_id, 
 	a.reviewer_name as reviewer_name, 
@@ -20,7 +23,7 @@ from (
 		x.reviewer_id, 
 		x.reviewer_name, 
 		x.num_neighborhoods, 
-		y.num_reviews
+		y.num_reviews 
 	from (
 		select 
 			t.reviewer_id as reviewer_id, 
@@ -39,7 +42,10 @@ from (
 			join ny_zipcode c 
 			on c.zipcode = b.zipcode 
 		) t 
-		group by reviewer_id
+		group by reviewer_id 
+		-- before: 18.33 sec, after: 4.35 sec
+		order by num_neighborhoods desc
+		limit 200
 	) x
 	join (
 		select 
