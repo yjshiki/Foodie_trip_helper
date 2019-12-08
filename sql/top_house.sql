@@ -6,7 +6,8 @@
 -- reviewers for rooms in this room_type
 -- schema: (neighborhood, room_type, num_houses)
 -- top 100 houses meeting 
--- requirements in each room_type  
+-- requirements in each room_type 
+-- before: 3.28 sec, after: 2.70 sec 
 select 
 	b.neighborhood as neighborhood, 
 	a.room_type as room_type, 
@@ -20,7 +21,8 @@ from (
 		b.listing_id, 
 		b.room_type, 
 		-- b.accommodates, 
-		b.zipcode 
+		b.zipcode, 
+		b.review_scores_rating 
 	-- G
 	from (
 		select 
@@ -48,7 +50,7 @@ from (
 					a.id as listing_id, 
 					a.room_type as room_type, 
 					a.review_scores_rating as review_scores_rating, 
-					a.zipcode as zipcode, 
+					-- a.zipcode as zipcode, 
 					-- a.accommodates as accommodates, 
 					a.price as price, 
 					count(b.reviewer_id) as num_reviewers
@@ -60,6 +62,8 @@ from (
 			where x.room_type = b.room_type
 			-- where room_type = "Shared room"
 		)
+	order by review_scores_rating
+	limit 100
 ) a 
 join ny_zipcode b 
 on a.zipcode = b.zipcode 
