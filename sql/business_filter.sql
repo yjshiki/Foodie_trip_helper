@@ -1,10 +1,8 @@
--- yelp_tip dataset is not loaded. tip.sql is running for a very long time, so we have a large space of optimization for it
--- Input a name of a restaurant 
--- Print all tips (short reviews) for top 3 open restaurants that have all the categories of the 
+-- Input a name of a business  
+-- Print top 3 open restaurants that have all the categories of the 
 -- user-inputted restaurant. The result should exclude the restaurant that was input. 
 -- Order first by highest “stars”, then highest “review_count” of restaurants, 
--- the date of the tip descendingly, and then the user_name. 
--- Schema: (business_id, business_name, user_id, user_name, tip, date, stars, review_count)
+-- Schema: (business_id, business_name, stars, review_count)
 -- before: > 4 h, after: 0.54 sec
 select distinct 
 	a.business_id as business_id, 
@@ -37,4 +35,9 @@ where (
 and a.is_open = 1
 order by stars desc, review_count desc, business_name
 limit 3
+
+
+
+
+
 
