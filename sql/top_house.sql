@@ -10,7 +10,8 @@
 -- before: 3.28 sec, after: 2.70 sec 
 select 
 	b.neighborhood as neighborhood, 
-	a.room_type as room_type, 
+	b.borough as borough, 
+	-- a.room_type as room_type, 
 	-- a.accommodates as accommodates, 
 	count(a.listing_id) as num_houses 
 -- T
@@ -62,6 +63,7 @@ from (
 			where x.room_type = b.room_type
 			-- where room_type = "Shared room"
 		)
+		and b.price <= 800
 	order by review_scores_rating
 	limit 100
 ) a 
