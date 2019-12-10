@@ -21,3 +21,7 @@ Then, type `localhost:8081` in the address line of your web browser. You are now
 ## Setup 
 
 We can create the database using `project.sql`, and populate it from CSV files using `load.sh` on the server. 
+
+## Compatibility 
+
+Our application can work on Chrome, Safari and Firefox. 
