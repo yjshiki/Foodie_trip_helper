@@ -1,0 +1,58 @@
+
+
+.jumbotron {
+  background-color: #f3f4f7;
+  padding: 2rem;
+  opacity: 0.9;
+
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  margin: 10px 0;
+  width: 100px;
+  height: 40px;
+  border: none;
+  font-size: 14px;
+  padding: 2px 16px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  outline: none;
+  background: #ed5f66;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-btn1 {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  margin: 10px 0;
+  width: 200px;
+  height: 40px;
+  border: none;
+  font-size: 14px;
+  padding: 2px 16px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  outline: none;
+  background: #ed5f66;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-btn:hover {
+  background: #ed5f66;
+}
+
+.back-btn:active {
+  background: #ed5f66;
+}
