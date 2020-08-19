@@ -25,3 +25,7 @@ We can create the database using `project.sql`, and populate it from CSV files u
 ## Compatibility 
 
 Our application can work on Chrome, Safari and Firefox. 
+
+## Demo
+
+https://drive.google.com/file/d/1Xm0YANxKotZLOa25j2qIOLH6wJnZqExo/view?usp=sharing
